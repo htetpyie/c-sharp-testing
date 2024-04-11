@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Diagnostics;
 
 namespace C_Sharp_Basic;
 
@@ -17,6 +18,7 @@ public class HttpClientTest
 
             using var response = await client.GetAsync("https://www.google.com");
 
+            var watch = Stopwatch.StartNew();
             if (response.IsSuccessStatusCode)
             {
                 string responeBody = await response.Content.ReadAsStringAsync();
@@ -26,6 +28,8 @@ public class HttpClientTest
             {
                 Console.WriteLine("Fetch Error");
             }
+            watch.Stop();
+            Console.WriteLine($"Escapsed Time => {watch.Elapsed}");
         }
         catch (Exception ex)
         {
