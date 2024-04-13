@@ -3,6 +3,7 @@ using C_Sharp_Basic;
 using System.Collections;
 using System.Xml.Linq;
 
-HttpClientTest.Run();
+//HttpClientTest.Run();
+Hashing.Run();
 
 Console.ReadLine();
