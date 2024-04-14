@@ -10,31 +10,36 @@ namespace C_Sharp_Basic;
 
 public class Hashing
 {
-
     public static void Run()
     {
+        var md5 = new HashDelegate(HashUsingMD5);
+        GenerateOutputs(md5);
+
+        var sha256 = new HashDelegate(HashUsingSHA);
+        GenerateOutputs(sha256);
+
+        var hmac = new HashDelegate(HashUsingHMAC);
+        GenerateOutputs(hmac);
+    }
+
+    private delegate string HashDelegate(string text);
+
+    private static void GenerateOutputs(HashDelegate hashMethod)
+    {
+        Console.WriteLine($"\n ---- Using {hashMethod.Method.Name} -------");
+
         var text = "Hello World";
         var text1 = " var strStreamOne = new MemoryStream(Encoding.UTF8.GetBytes(text));";
 
-        //var watch = Stopwatch.StartNew();
-        var result = HashUsingMD5(text).Result;
-        var result1 = HashUsingMD5(text1).Result;
-        
-        Console.WriteLine($"Hashed value of 'Hello World' => \n {result} \n length is => {result.Length}");
-        Console.WriteLine($"Hashed value of 'var strStreamOne = new MemoryStream(Encoding.UTF8.GetBytes(text));' => \n {result1} \n length is {result1.Length}");
-        //watch.Stop();
-        //Console.WriteLine($"Elapsed Time is => {watch.Elapsed.TotalMilliseconds}");
+        var result = hashMethod(text);
+        var result1 = hashMethod(text1);
 
-        Console.WriteLine("\n ---- Using SHA -------"); 
-        var ShaResult = HashUsingMD5(text).Result;
-        var ShaResult1 = HashUsingMD5(text1).Result;
-
-        Console.WriteLine($"Hashed value of 'Hello World' => \n {ShaResult} \n length is => {ShaResult.Length}");
-        Console.WriteLine($"Hashed value of 'var strStreamOne = new MemoryStream(Encoding.UTF8.GetBytes(text));' => \n {ShaResult1} \n length is {ShaResult1.Length}");
+        Console.WriteLine($"Hashed value of '{text}' => \n {result} \n length is => {result.Length}");
+        Console.WriteLine($"Hashed value of '{text1}' => \n {result1} \n length is {result1.Length}");
 
     }
 
-    private static async Task<string> HashUsingMD5(string text)
+    private static string HashUsingMD5(string text)
     {
         var hashedResutl = string.Empty;
 
@@ -43,13 +48,13 @@ public class Hashing
         byte[] hashOne;
 
         using var hasher = MD5.Create();
-        hashOne = await hasher.ComputeHashAsync(strStreamOne);
+        hashOne = hasher.ComputeHashAsync(strStreamOne).Result;
         hashedResutl = Convert.ToBase64String(hashOne);
 
         return hashedResutl;
     }
 
-    private static async Task<string> HashUsingSHA(string text)
+    private static string HashUsingSHA(string text)
     {
         var hashedResutl = string.Empty;
 
@@ -58,7 +63,23 @@ public class Hashing
         byte[] hashOne;
 
         using var hasher = SHA256.Create();
-        hashOne = await hasher.ComputeHashAsync(strStreamOne);
+        hashOne = hasher.ComputeHashAsync(strStreamOne).Result;
+        hashedResutl = Convert.ToBase64String(hashOne);
+
+        return hashedResutl;
+    }
+
+    private static string HashUsingHMAC(string text)
+    {
+        var hashedResutl = string.Empty;
+
+        var strStreamOne = new MemoryStream(Encoding.UTF8.GetBytes(text));
+
+        byte[] hashOne;
+        byte[] key = Encoding.UTF8.GetBytes("superSecretH4shKey1!");
+
+        using var hasher = new HMACSHA256(key);
+        hashOne = hasher.ComputeHashAsync(strStreamOne).Result;
         hashedResutl = Convert.ToBase64String(hashOne);
 
         return hashedResutl;
