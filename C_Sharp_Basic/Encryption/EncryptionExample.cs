@@ -10,7 +10,7 @@ namespace C_Sharp_Basic;
 
 public class EncryptionExample
 {
-    public static void Run()
+    public static void RunAES()
     {
         var dataStr = "This is corporate research! Dont read me!";
         var data = Encoding.UTF8.GetBytes(dataStr);
@@ -29,6 +29,7 @@ public class EncryptionExample
 
     }
 
+    #region AES
     private static byte[] Encrypt(byte[] data, byte[] key, out byte[] iv)
     {
         using var aes = Aes.Create();
@@ -42,8 +43,6 @@ public class EncryptionExample
         iv = aes.IV;
         return encryptor.TransformFinalBlock(data, 0, data.Length);
     }
-
-
     private static byte[] Decrypt(byte[] data, byte[] key, byte[] iv)
     {
         using (var aes = Aes.Create())
@@ -57,7 +56,6 @@ public class EncryptionExample
             }
         }
     }
-
     private static byte[] GenerateAESKey()
     {
         var rnd = RandomNumberGenerator.Create();
@@ -66,4 +64,51 @@ public class EncryptionExample
 
         return b;
     }
+    #endregion
+
+    #region RSA
+
+    public static void RunRSA()
+    {
+        var dataStr = "This is corporate research! Dont read me!";
+        var data = Encoding.UTF8.GetBytes(dataStr);
+        var keyLength = 2048; // size in bits
+        GenerateKeys(keyLength, out var publicKey, out var privateKey);
+        var encryptedData = Encrypt(data, publicKey);
+        var encryptedDataAsString = Convert.ToHexString(encryptedData);
+        var decryptedDataAsString = Encoding.UTF8.GetString(Decrypt(encryptedData,privateKey));
+        Console.WriteLine("Encrypted Value:\n" + encryptedDataAsString);
+        Console.WriteLine("Decrypted Value:\n" + decryptedDataAsString);
+    }
+
+    private static void GenerateKeys(int keyLength, out RSAParameters publicKey, out RSAParameters privateKey)
+    {
+        using (var rsa = RSA.Create())
+        {
+            rsa.KeySize = keyLength;
+            publicKey = rsa.ExportParameters(includePrivateParameters: false);
+            privateKey = rsa.ExportParameters(includePrivateParameters: true);
+        }
+    }
+
+    private static byte[] Encrypt(byte[] data, RSAParameters publicKey)
+    {
+        using (var rsa = RSA.Create())
+        {
+            rsa.ImportParameters(publicKey);
+            var result = rsa.Encrypt(data, RSAEncryptionPadding.OaepSHA256);
+            return result;
+        }
+    }
+
+    public static byte[] Decrypt(byte[] data, RSAParameters privateKey)
+    {
+        using (var rsa = RSA.Create())
+        {
+            rsa.ImportParameters(privateKey);
+            return rsa.Decrypt(data, RSAEncryptionPadding.OaepSHA256);
+        }
+    }
+
+    #endregion
 }
