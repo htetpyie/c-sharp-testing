@@ -76,7 +76,7 @@ public class EncryptionExample
         GenerateKeys(keyLength, out var publicKey, out var privateKey);
         var encryptedData = Encrypt(data, publicKey);
         var encryptedDataAsString = Convert.ToHexString(encryptedData);
-        var decryptedDataAsString = Encoding.UTF8.GetString(Decrypt(encryptedData,privateKey));
+        var decryptedDataAsString = Encoding.UTF8.GetString(Decrypt(encryptedData, privateKey));
         Console.WriteLine("Encrypted Value:\n" + encryptedDataAsString);
         Console.WriteLine("Decrypted Value:\n" + decryptedDataAsString);
     }
@@ -110,5 +110,38 @@ public class EncryptionExample
         }
     }
 
+    #endregion
+
+    #region DSA
+
+    public static void RunDSA()
+    {
+        var dsa = DSA.Create();
+        var dataStr = "This is corporate research! Dont read me!";
+        var data = Encoding.UTF8.GetBytes(dataStr);
+
+        var signedData = Sign(dsa, data);
+
+        dsa.Dispose();
+
+    }
+
+    public static byte[] Sign(DSA dsa, byte[] data)
+    {
+        if (dsa is null)
+            throw new NullReferenceException(nameof(dsa));
+
+        var result = dsa.SignData(data, HashAlgorithmName.SHA256);
+
+        return result;
+    }
+
+    public static bool VerifySignature(DSA dsa, byte[] data, byte[] signedData)
+    {
+        if (dsa is null)
+            throw new NullReferenceException(nameof(dsa));
+
+        return dsa.VerifyData(data, signedData, HashAlgorithmName.SHA256);
+    }
     #endregion
 }

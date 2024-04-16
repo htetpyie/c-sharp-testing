@@ -4,6 +4,6 @@ using System.Collections;
 using System.Xml.Linq;
 
 //HttpClientTest.Run();
-EncryptionExample.RunRSA();
+EncryptionExample.RunDSA();
 
 Console.ReadLine();
