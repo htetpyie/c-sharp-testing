@@ -15,7 +15,7 @@ public class JWTToken
 
     public static void Run()
     {
-        string UserId = "TETTTTT-0001-0001";
+        string UserId = "3FECC299-AE7E-4557-8506-38493B28AA52";
         GenerateToken(UserId);
     }
 
