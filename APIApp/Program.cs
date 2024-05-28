@@ -1,10 +1,17 @@
+using APIApp.Controllers.FilterTesting.ActionFilter;
 using Asp.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+#region Add filter globally
+builder.Services.AddControllers(option =>
+{
+    option.Filters.Add<ActionFilterSample>();
+});
+#endregion
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
