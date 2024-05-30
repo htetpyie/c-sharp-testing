@@ -8,7 +8,6 @@ public class ActionFilterSample : IActionFilter
     {
         // Do something before the action executes.
     }
-
     public void OnActionExecuted(ActionExecutedContext context)
     {
         // Do something after the action executes.
