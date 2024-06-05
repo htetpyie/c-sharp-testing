@@ -1,7 +1,6 @@
 using APIApp.Controllers.FilterTesting.ActionFilter;
 using APIApp.GraphQl;
 using Asp.Versioning;
-using HotChocolate.AspNetCore.Playground;
 using HotChocolate.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,16 +14,19 @@ builder.Services.AddControllers(option =>
 });
 #endregion
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
+
+#region Graphql
 builder.Services
+    .AddRouting()
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
     .AddType<ProductType>()
     .AddType<ProductInputType>();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+#endregion
 
 #region API Versioning
 var apiVersioningBuilder = builder.Services.AddApiVersioning(o =>
@@ -51,15 +53,11 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
 
     // Enable the Playground middleware
-    app.UsePlayground(new PlaygroundOptions
-    {
-        Path = "/graphql-playground",
-        QueryPath = "/graphql"
-    });
+    //app.UsePlayground();
 
 }
 
