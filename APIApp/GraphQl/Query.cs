@@ -43,7 +43,6 @@ namespace APIApp.GraphQl
             descriptor.Field(t => t.Price).Type<NonNullType<DecimalType>>();
         }
     }
-
     public class ProductInputType : InputObjectType<ProductInput>
     {
         protected override void Configure(IInputObjectTypeDescriptor<ProductInput> descriptor)
