@@ -26,6 +26,7 @@ namespace APIApp.GraphQl
             return product;
         }
     }
+
     public class ProductInput
     {
         public int Id { get; set; }
