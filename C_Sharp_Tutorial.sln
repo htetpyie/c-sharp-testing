@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic", "C_Sharp_Basic\Basic.csproj", "{58BE6288-6AAD-483C-8386-A9CC3CB34350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIApp", "APIApp\APIApp.csproj", "{B89713AF-B860-4EFA-B340-0AA807410A89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIApp", "APIApp\APIApp.csproj", "{B89713AF-B860-4EFA-B340-0AA807410A89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWSMApp", "BlazorWSMApp\BlazorWSMApp.csproj", "{6B72609D-AC3E-45AF-BA3E-4921790D9F3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B89713AF-B860-4EFA-B340-0AA807410A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B89713AF-B860-4EFA-B340-0AA807410A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B89713AF-B860-4EFA-B340-0AA807410A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B72609D-AC3E-45AF-BA3E-4921790D9F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B72609D-AC3E-45AF-BA3E-4921790D9F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B72609D-AC3E-45AF-BA3E-4921790D9F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B72609D-AC3E-45AF-BA3E-4921790D9F3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
