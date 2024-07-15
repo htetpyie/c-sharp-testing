@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIApp", "APIApp\APIApp.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWSMApp", "BlazorWSMApp\BlazorWSMApp.csproj", "{6B72609D-AC3E-45AF-BA3E-4921790D9F3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCApp", "MVCApp\MVCApp.csproj", "{DE67E460-F969-4DDA-84F0-FBA32EFE158C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCApp", "MVCApp\MVCApp.csproj", "{DE67E460-F969-4DDA-84F0-FBA32EFE158C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
