@@ -1,11 +1,34 @@
 using APIApp.Controllers.FilterTesting.ActionFilter;
 using APIApp.GraphQl;
 using Asp.Versioning;
+using Serilog;
 using HotChocolate.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+#region Logging By Asp.Net
+//builder.Logging.ClearProviders();
+//builder.Logging.AddConsole();
+//builder.Logging.AddDebug();
+#endregion
+
+#region Serilog
+//https://github.com/serilog/serilog-aspnetcore
+builder
+    .Configuration
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile("serilogConfiguration.json")
+    .Build();
+
+builder.Services.AddSerilog((services, lc) => lc
+    .ReadFrom.Configuration(builder.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext()
+    .WriteTo.Console());
+
+#endregion
 
 #region Add filter globally
 builder.Services.AddControllers(option =>
@@ -60,6 +83,9 @@ if (app.Environment.IsDevelopment())
     //app.UsePlayground();
 
 }
+
+//Configure for Serilog
+app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
