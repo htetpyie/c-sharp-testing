@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace AspNet.API.Controllers
+namespace APIApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
