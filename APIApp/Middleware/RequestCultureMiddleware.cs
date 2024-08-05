@@ -1,14 +1,17 @@
-﻿using System.Globalization;
+﻿using APIApp.LiteDb;
+using System.Globalization;
 
 namespace APIApp.Middleware
 {
 	public class RequestCultureMiddleware
 	{
 		private readonly RequestDelegate _next;
-
-		public RequestCultureMiddleware(RequestDelegate next)
+		private readonly LiteDbService _db;
+		
+		public RequestCultureMiddleware(RequestDelegate next, LiteDbService db)
 		{
 			_next = next;
+			_db = db;
 		}
 
 		public async Task InvokeAsync(HttpContext context)
@@ -21,6 +24,8 @@ namespace APIApp.Middleware
 				CultureInfo.CurrentCulture = culture;
 				CultureInfo.CurrentUICulture = culture;
 			}
+			//_db.CreateCustomer();
+			//var result = _db.GetAllCustomer();
 
 			// Call the next delegate/middleware in the pipeline.
 			await _next(context);
