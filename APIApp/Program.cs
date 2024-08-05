@@ -6,6 +6,7 @@ using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
 using APIApp.Middleware;
+using APIApp.LiteDb;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +67,7 @@ builder.Services.AddControllers(option =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<LiteDbService>();
 
 #region Graphql
 builder.Services
@@ -148,6 +150,7 @@ app.Use(async (context, next) =>
 	//await context.Response.WriteAsync("Just writing from middleware.");
 	// Do logging or other work that doesn't write to the Response.
 });
+
 
 //app.Run(async context =>
 //{

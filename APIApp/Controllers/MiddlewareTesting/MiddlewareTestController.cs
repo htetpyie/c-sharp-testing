@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using APIApp.LiteDb;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
@@ -8,11 +9,26 @@ namespace APIApp.Controllers.MiddlewareTesting
 	[ApiController]
 	public class MiddlewareTestController : BaseController
 	{
+		private readonly LiteDbService _liteDb;
+
+		public MiddlewareTestController(LiteDbService liteDb)
+		{
+			_liteDb = liteDb;
+		}
+
 		[EnableRateLimiting("fixed")]
 		[HttpGet("get-data")]
 		public IActionResult Get()
 		{
-			return Ok("Get data api is called!");
+			var customers = _liteDb.GetAllCustomer();
+			return Ok(customers);
+		}
+
+		[HttpGet("create")]
+		public IActionResult CreateCustomer()
+		{
+			_liteDb.CreateCustomer();
+			return Ok("Customer is created.");
 		}
 	}
 }
