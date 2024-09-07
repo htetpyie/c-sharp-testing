@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWSMApp", "BlazorWSMAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCApp", "MVCApp\MVCApp.csproj", "{DE67E460-F969-4DDA-84F0-FBA32EFE158C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{D18E6D55-2209-45A1-B6DC-7525740BCB97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DE67E460-F969-4DDA-84F0-FBA32EFE158C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE67E460-F969-4DDA-84F0-FBA32EFE158C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE67E460-F969-4DDA-84F0-FBA32EFE158C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D18E6D55-2209-45A1-B6DC-7525740BCB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D18E6D55-2209-45A1-B6DC-7525740BCB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D18E6D55-2209-45A1-B6DC-7525740BCB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D18E6D55-2209-45A1-B6DC-7525740BCB97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
