@@ -1,7 +1,26 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@using BlazorServerApp.Components.Layout
+@using MudBlazor
+@inject IDialogService DialogService
+<MudDialogProvider />
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<MudButton @onclick="OpenDialogAsync" Variant="Variant.Filled" Color="Color.Primary">
+    Open Simple Dialog
+</MudButton>
+
+@code {
+
+    private Task OpenDialogAsync()
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+
+        return DialogService.ShowAsync<DialogComponent>("Simple Dialog", options);
+    }
+}
