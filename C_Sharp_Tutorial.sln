@@ -18,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{71
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServerApp", "BlazorServerApp\BlazorServerApp.csproj", "{FA588BBA-E272-44BC-BECA-FE801DFAA67E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServerApp", "BlazorServerApp\BlazorServerApp.csproj", "{FA588BBA-E272-44BC-BECA-FE801DFAA67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServerGlobal", "BlazorServerGlobal\BlazorServerGlobal.csproj", "{5E885921-FFCF-4F49-AC9D-9DD0802A61B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServerGlobal", "BlazorServerGlobal\BlazorServerGlobal.csproj", "{5E885921-FFCF-4F49-AC9D-9DD0802A61B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

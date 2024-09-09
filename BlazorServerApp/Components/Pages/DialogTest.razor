@@ -1,0 +1,30 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject NavigationManager _navigation
+
+<div>
+	<p>Output: @message</p>
+
+	<button onclick="document.getElementById('my-dialog').showModal()">
+		Show modal dialog
+	</button>
+
+	<dialog id="my-dialog" @onclose="OnClose" @oncancel="OnCancel">
+		<p>Hi there!</p>
+
+		<form method="dialog">
+			<button>Close</button>
+		</form>
+	</dialog>
+</div>
+
+@code {
+	private string? message;
+
+	private void OnClose(EventArgs e)
+	{
+		message += "onclose, ";
+	}
+
+	private void OnCancel(EventArgs e) => message += "oncancel, ";
+}
