@@ -9,3 +9,10 @@
 ``` 
  @attribute [Route(Constants.CounterRoute)]
 
+
+## Minimal API
+
+
+## Shared
+- [Mapster](https://code-maze.com/mapster-aspnetcore-introduction/)
+
