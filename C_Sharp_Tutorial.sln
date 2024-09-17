@@ -24,7 +24,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServerGlobal", "Blazo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{2ED17C17-64AE-41D8-A5F9-6D8CE481E7F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalAPI", "MinimalAPI\MinimalAPI.csproj", "{97027A87-6B2C-4E78-8D5F-BE5D44C6472F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalAPI", "MinimalAPI\MinimalAPI.csproj", "{97027A87-6B2C-4E78-8D5F-BE5D44C6472F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{2AAB593C-1042-49EC-8ABD-8BFEBF6C7EE5}"
+	ProjectSection(SolutionItems) = preProject
+		custom-setting-dev.json = custom-setting-dev.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
