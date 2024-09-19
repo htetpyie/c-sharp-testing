@@ -1,5 +1,5 @@
 {
-    "ConnectionStrings": {
-        "DbConnection" :  ""
+    "DbConnections": {
+        "MYSQLConnection": "Server=localhost;Database=hppm;User=root;Password=root;"
     }
 }

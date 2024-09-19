@@ -29,3 +29,17 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal_config;User
 dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -t function -f
 ```
 
+## Database
+
+1. Entity Framework Core
+ * <samll>Microsoft.EntityFrameworkCore
+
+2. MySQL
+ * <small>Pomelo.EntityFrameworkCore.MySql<small>
+
+3. SQL Server
+
+
+
+##To Learn
+[.net 8 blazor](https://akifmt.github.io/dotnet/2024-07-28-blazor-radzen-.net8-authenticationauthorization-with-identity/)
