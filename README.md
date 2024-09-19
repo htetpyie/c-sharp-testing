@@ -1,4 +1,7 @@
+# [Git Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
 # C_Sharp_Basic
+
 
 ## Blazor
 ### 1. [Routing & navigating](https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/routing?view=aspnetcore-8.0)
@@ -24,22 +27,32 @@
 dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal_log;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o LogDbContextModels --context LogDbContext -f
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal_config;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o ConfigDbContextModels --context ConfigDbContext -f
-```
-```
-dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -t function -f
+
+dotnet ef dbcontext scaffold "Server=localhost;Database=hppm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -f
+dotnet ef dbcontext scaffold "Server=localhost;Database=hpmm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -t function -f
 ```
 
 ## Database
 
-1. Entity Framework Core
- * <samll>Microsoft.EntityFrameworkCore
+#### Entity Framework Core
+```
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Tools 
+```
 
-2. MySQL
- * <small>Pomelo.EntityFrameworkCore.MySql<small>
+#### MySQL
+```
+dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.0
+```
 
-3. SQL Server
+
+#### SQL Server
+```
+
+```
 
 
-
-##To Learn
+## To Learn
 [.net 8 blazor](https://akifmt.github.io/dotnet/2024-07-28-blazor-radzen-.net8-authenticationauthorization-with-identity/)
