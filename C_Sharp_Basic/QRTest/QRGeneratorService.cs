@@ -1,4 +1,5 @@
 ﻿using QRCoder;
+using static QRCoder.PayloadGenerator;
 
 namespace Basic.QRTest;
 
@@ -8,7 +9,7 @@ public class QRGeneratorService
 	{
 		using var qrGenerator = new QRCodeGenerator();
 		using QRCodeData qrCodeData = qrGenerator
-			.CreateQrCode("The text which should be encoded.", QRCodeGenerator.ECCLevel.Q);
+			.CreateQrCode(new Url("The text which should be encoded."), QRCodeGenerator.ECCLevel.Q);
 		using PngByteQRCode qrCode = new PngByteQRCode(qrCodeData);
 
 		byte[] qrCodeImage = qrCode.GetGraphic(20);
