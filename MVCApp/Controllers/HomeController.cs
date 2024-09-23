@@ -18,7 +18,7 @@ namespace MVCApp.Controllers
 
 		public IActionResult Index()
 		{
-			_qrService.GenerateQRWithImage();
+			_qrService.GenerateURLQR("https://github.com/htetpyie");
 			return View();
 		}
 

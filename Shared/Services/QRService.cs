@@ -2,7 +2,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Text;
 using static QRCoder.PayloadGenerator;
+using static QRCoder.SvgQRCode;
 
 namespace Shared.Services;
 
@@ -102,16 +104,20 @@ public class QRService
 			.CreateQrCode(new Url(url));
 
 		#region PNG Byte QR Code
-		using PngByteQRCode qrCode = new PngByteQRCode(qrCodeData);
-		byte[] qrCodeImage = qrCode.GetGraphic(20);
-		#endregion
+		using SvgQRCode qrCode = new SvgQRCode(qrCodeData);
 
-		return qrCodeImage;
+		var imageByte = File.ReadAllBytes("wwwroot/img/aircodlogo.jpg");
+		SvgLogo logo = new SvgLogo(imageByte);
+		var qrCodeImage = qrCode.GetGraphic(pixelsPerModule: 20, Color.DarkBlue, Color.WhiteSmoke, logo: logo);
+		#endregion
+		var result = Encoding.UTF8.GetBytes(qrCodeImage);
+		SaveImage(result);
+		return result;
 	}
 
 	public void SaveImage(byte[] qrCodeImage)
 	{
-		var filePath = Directory.GetCurrentDirectory() + "/QRImage.png";
+		var filePath = Directory.GetCurrentDirectory() + "/QRImage.svg";
 		File.WriteAllBytes(filePath, qrCodeImage);
 	}
 
