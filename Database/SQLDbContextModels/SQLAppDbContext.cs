@@ -42,7 +42,7 @@ public partial class SQLAppDbContext : DbContext
                 .HasNoKey()
                 .ToTable("Tbl_Class");
 
-            entity.Property(e => e.Discription).HasMaxLength(100);
+            entity.Property(e => e.Description).HasMaxLength(100);
             entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.Property(e => e.Name).HasMaxLength(50);
         });

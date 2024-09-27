@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{2AAB59
 		custom-setting-dev.json = custom-setting-dev.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{97027A87-6B2C-4E78-8D5F-BE5D44C6472F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97027A87-6B2C-4E78-8D5F-BE5D44C6472F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97027A87-6B2C-4E78-8D5F-BE5D44C6472F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
