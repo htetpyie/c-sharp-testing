@@ -1,5 +1,6 @@
 {
     "DbConnections": {
-        "MYSQLConnection": "Server=localhost;Database=hppm;User=root;Password=root;"
+        "MYSQLConnection": "Server=localhost;Database=hppm;User=root;Password=root;",
+        "SQLConnection" :  "Server=.;Database=HPPM,TrustServerCertificate=true"
     }
 }

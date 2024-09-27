@@ -22,6 +22,8 @@
 
 ## Scaffolding
 
+#### MySQL
+
 ```Scaffold-DbContext "Server=localhost;Database=admin_portal_log;User=root;Password=root"  Pomelo.EntityFrameworkCore.MySql -o LogDbContextModels --context LogDbContext -f
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal_log;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o LogDbContextModels --context LogDbContext -f
@@ -30,6 +32,11 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal_config;User
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=hppm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -f
 dotnet ef dbcontext scaffold "Server=localhost;Database=hpmm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -t function -f
+```
+
+#### SQL Server
+```
+dotnet ef dbcontext scaffold "Data Source=.;Initial Catalog=HPPM;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o SQLDbContextModels --context SQLAppDbContext -f
 ```
 
 ## Database
