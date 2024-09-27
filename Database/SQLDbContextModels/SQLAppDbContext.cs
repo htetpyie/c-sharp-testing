@@ -27,23 +27,21 @@ public partial class SQLAppDbContext : DbContext
     {
         modelBuilder.Entity<TblBatch>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_Batch");
+            entity.HasKey(e => e.Id).HasName("PK__Tbl_Batc__3214EC07C80D3D0D");
+
+            entity.ToTable("Tbl_Batch");
 
             entity.Property(e => e.Description).HasMaxLength(100);
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.Property(e => e.Name).HasMaxLength(10);
         });
 
         modelBuilder.Entity<TblClass>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_Class");
+            entity.HasKey(e => e.Id).HasName("PK__Tbl_Clas__3214EC07649FB9E9");
+
+            entity.ToTable("Tbl_Class");
 
             entity.Property(e => e.Description).HasMaxLength(100);
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 
