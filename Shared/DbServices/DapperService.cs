@@ -2,7 +2,7 @@
 using MySqlConnector;
 using System.Data;
 
-namespace Database.DbServices;
+namespace Shared.DbServices;
 
 public class DapperService
 {

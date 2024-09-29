@@ -1,7 +1,5 @@
 # [Git Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
-# C_Sharp_Basic
-
 
 ## Blazor
 ### 1. [Routing & navigating](https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/routing?view=aspnetcore-8.0)
@@ -54,12 +52,14 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.0
 ```
 
-
 #### SQL Server
 ```
 
 ```
-
+#### [Lite Db](https://www.litedb.org/)
+```
+dotnet add package LiteDB
+```
 
 ## [QR Coder](https://github.com/codebude/QRCoder/wiki/Advanced-usage---QR-Code-renderers#2-overview-of-the-different-renderers)
 ```
