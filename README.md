@@ -61,6 +61,12 @@ dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.0
 dotnet add package LiteDB
 ```
 
+#### PostgreSQL
+```
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+```
+
+
 ## [QR Coder](https://github.com/codebude/QRCoder/wiki/Advanced-usage---QR-Code-renderers#2-overview-of-the-different-renderers)
 ```
 QRCodeGenerator qrGenerator = new QRCodeGenerator();

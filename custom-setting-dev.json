@@ -1,6 +1,7 @@
 {
     "DbConnections": {
         "MYSQLConnection": "Server=localhost;Database=hppm;User=root;Password=root;",
-        "SQLConnection": "Data Source=.;Initial Catalog=HPPM;Trusted_Connection=True;TrustServerCertificate=True;"
+        "SQLConnection": "Data Source=.;Initial Catalog=HPPM;Trusted_Connection=True;TrustServerCertificate=True;",
+        "PostgreConnection": "Host=localhost;Username=postgres;Password=root;Database="
     }
 }
