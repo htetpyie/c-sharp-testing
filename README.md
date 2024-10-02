@@ -64,6 +64,11 @@ dotnet add package LiteDB
 #### PostgreSQL
 ```
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+
+Scaffold-DbContext "Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword" Npgsql.EntityFrameworkCore.PostgreSQL -o Models
+
+dotnet ef dbcontext scaffold "Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword" Npgsql.EntityFrameworkCore.PostgreSQL -o Models
 ```
 
 
