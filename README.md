@@ -81,6 +81,10 @@ Bitmap qrCodeImage = qrCode.GetGraphic(20);
 ```
 #### [Refrences](https://medium.com/@umairg404/generate-qr-codes-in-net-core-minimal-api-with-qrcoder-library-6eeeceb7e9aa)
 
+#### [ULID](https://github.com/Cysharp/Ulid)
+```
+dotnet add package Ulid
+```
 
 ## To Learn
 [.net 8 blazor](https://akifmt.github.io/dotnet/2024-07-28-blazor-radzen-.net8-authenticationauthorization-with-identity/)
