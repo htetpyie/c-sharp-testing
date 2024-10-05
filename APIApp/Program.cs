@@ -5,6 +5,7 @@ using Serilog;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
+using APIApp.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -154,5 +155,6 @@ app.Use(async (context, next) =>
 //});
 app.UseRateLimiter();
 
+app.UseRequestCulture();
 
 app.Run();
