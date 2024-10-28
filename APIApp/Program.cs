@@ -1,12 +1,12 @@
 using APIApp.Controllers.FilterTesting.ActionFilter;
 using APIApp.GraphQl;
-using Asp.Versioning;
-using Serilog;
-using HotChocolate.AspNetCore;
-using Microsoft.AspNetCore.RateLimiting;
-using System.Threading.RateLimiting;
-using APIApp.Middleware;
 using APIApp.LiteDb;
+using APIApp.Middleware;
+using Asp.Versioning;
+using Microsoft.AspNetCore.RateLimiting;
+using Serilog;
+using StackExchange.Redis;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,23 +16,23 @@ var builder = WebApplication.CreateBuilder(args);
 https://learn.microsoft.com/en-us/aspnet/core/performance/rate-limit?view=aspnetcore-8.0https://learn.microsoft.com/en-us/aspnet/core/performance/rate-limit?view=aspnetcore-8.0
 //fixed
 builder.Services.AddRateLimiter(_ => _
-	.AddFixedWindowLimiter(policyName: "fixed", options =>
-	{
-		options.PermitLimit = 2;
-		options.Window = TimeSpan.FromSeconds(12);
-		options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-		options.QueueLimit = 5;
-	}));
+    .AddFixedWindowLimiter(policyName: "fixed", options =>
+    {
+        options.PermitLimit = 2;
+        options.Window = TimeSpan.FromSeconds(12);
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 5;
+    }));
 
 //concurrency
 
 builder.Services.AddRateLimiter(_ => _
-	.AddConcurrencyLimiter(policyName: "concurrency", options =>
-	{
-		options.PermitLimit = 2;
-		options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-		options.QueueLimit = 3;
-	}));
+    .AddConcurrencyLimiter(policyName: "concurrency", options =>
+    {
+        options.PermitLimit = 2;
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 3;
+    }));
 #endregion
 
 #region Logging By Asp.Net
@@ -44,23 +44,23 @@ builder.Services.AddRateLimiter(_ => _
 #region Serilog
 //https://github.com/serilog/serilog-aspnetcore
 builder
-	.Configuration
-	.AddJsonFile("appsettings.json")
-	.AddJsonFile("serilogConfiguration.json")
-	.Build();
+    .Configuration
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile("serilogConfiguration.json")
+    .Build();
 
 builder.Services.AddSerilog((services, lc) => lc
-	.ReadFrom.Configuration(builder.Configuration)
-	.ReadFrom.Services(services)
-	.Enrich.FromLogContext()
-	.WriteTo.Console());
+    .ReadFrom.Configuration(builder.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext()
+    .WriteTo.Console());
 
 #endregion
 
 #region Add filter globally
 builder.Services.AddControllers(option =>
 {
-	option.Filters.Add<ActionFilterSample>();
+    option.Filters.Add<ActionFilterSample>();
 });
 #endregion
 
@@ -71,32 +71,37 @@ builder.Services.AddSingleton<LiteDbService>();
 
 #region Graphql
 builder.Services
-	.AddRouting()
-	.AddGraphQLServer()
-	.AddQueryType<Query>()
-	.AddMutationType<Mutation>()
-	.AddType<ProductType>()
-	.AddType<ProductInputType>();
+    .AddRouting()
+    .AddGraphQLServer()
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
+    .AddType<ProductType>()
+    .AddType<ProductInputType>();
 #endregion
 
 #region API Versioning
 var apiVersioningBuilder = builder.Services.AddApiVersioning(o =>
 {
-	o.AssumeDefaultVersionWhenUnspecified = true;
-	o.DefaultApiVersion = new ApiVersion(2, 0);
-	o.ReportApiVersions = true;
-	o.ApiVersionReader = ApiVersionReader.Combine(
-		new QueryStringApiVersionReader("api-version"),
-		new HeaderApiVersionReader("X-Version"),
-		new MediaTypeApiVersionReader("ver"));
+    o.AssumeDefaultVersionWhenUnspecified = true;
+    o.DefaultApiVersion = new ApiVersion(2, 0);
+    o.ReportApiVersions = true;
+    o.ApiVersionReader = ApiVersionReader.Combine(
+        new QueryStringApiVersionReader("api-version"),
+        new HeaderApiVersionReader("X-Version"),
+        new MediaTypeApiVersionReader("ver"));
 });
 
 apiVersioningBuilder.AddApiExplorer(
-	options =>
-	{
-		options.GroupNameFormat = "'v'VVV";
-		options.SubstituteApiVersionInUrl = true;
-	});
+    options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
+#endregion
+
+#region Redis
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost"));
+builder.Services.AddHttpClient();
 #endregion
 
 var app = builder.Build();
@@ -104,17 +109,17 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
-	app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 
-	// Enable the Playground middleware
-	//app.UsePlayground();
+    // Enable the Playground middleware
+    //app.UsePlayground();
 }
 else
 {
-	app.UseExceptionHandler("/Error");
-	app.UseHsts();
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 app.UseStaticFiles();
@@ -145,10 +150,10 @@ app.MapGraphQL("/graphql");
 
 app.Use(async (context, next) =>
 {
-	// Do work that can write to the Response.
-	await next.Invoke();
-	//await context.Response.WriteAsync("Just writing from middleware.");
-	// Do logging or other work that doesn't write to the Response.
+    // Do work that can write to the Response.
+    await next.Invoke();
+    //await context.Response.WriteAsync("Just writing from middleware.");
+    // Do logging or other work that doesn't write to the Response.
 });
 
 

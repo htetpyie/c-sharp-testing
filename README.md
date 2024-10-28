@@ -86,5 +86,10 @@ Bitmap qrCodeImage = qrCode.GetGraphic(20);
 dotnet add package Ulid
 ```
 
+#### [Redis](https://redis.io/learn/develop/dotnet)
+```
+dotnet add package StackExchange.Redis
+```
+
 ## To Learn
 [.net 8 blazor](https://akifmt.github.io/dotnet/2024-07-28-blazor-radzen-.net8-authenticationauthorization-with-identity/)
