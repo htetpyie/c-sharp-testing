@@ -23,7 +23,7 @@ namespace APIApp.Controllers.RedisTesting
         private readonly IDatabase _redis;
 
 
-        [HttpGet(Name = "GetWeatherForecastUsingRedis")]
+        [HttpGet("Redis-Test")]
         public async Task<ForecastResult> Get([FromQuery] double latitude, [FromQuery] double longitude)
         {
             string json;
@@ -46,6 +46,7 @@ namespace APIApp.Controllers.RedisTesting
             return result;
         }
 
+        //16.848080275784394, 96.18149365029845
         private async Task<string> GetForecast(double latitude, double longitude)
         {
             var pointsRequestQuery = $"https://api.weather.gov/points/{latitude},{longitude}"; //get the URI
