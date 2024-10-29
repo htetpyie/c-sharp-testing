@@ -2,11 +2,10 @@
 
 public class CustomSettingModel
 {
-    public DbConnectionModel? DbConnections { get; set; }
+	public DbConnectionModel? DbConnections { get; set; }
+	public RedisModel? Redis { get; set; }
 }
 
-public class DbConnectionModel
-{
-    public string? MYSQLConnection { get; set; }
-    public string? SQLConnection { get; set; }
-}
+public record DbConnectionModel(string? MYSQLConnection, string? SQLConnection) { }
+
+public record RedisModel(string URL, TimeSpan? CacheExpireTime) { }

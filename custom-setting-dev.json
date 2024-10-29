@@ -3,5 +3,9 @@
         "MYSQLConnection": "Server=localhost;Database=hppm;User=root;Password=root;",
         "SQLConnection": "Data Source=.;Initial Catalog=HPPM;Trusted_Connection=True;TrustServerCertificate=True;",
         "PostgreConnection": "Host=localhost;Username=postgres;Password=root;Database="
+    },
+    "Redis": {
+        "URL": "127.0.0.1:6379",
+        "CacheExpireTime" :  "10" //In Minutes
     }
 }
