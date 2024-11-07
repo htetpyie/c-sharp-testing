@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Sharp_Basic;
+namespace Basic.Encryption;
 
 public class Hashing
 {

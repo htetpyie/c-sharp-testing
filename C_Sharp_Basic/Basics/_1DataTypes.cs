@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Sharp_Basic.Basics
+namespace Basic.Basics
 {
     public class _1DataTypes
     {

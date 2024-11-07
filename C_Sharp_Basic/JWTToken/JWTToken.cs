@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Sharp_Basic;
+namespace Basic.JWTToken;
 
 public class JWTToken
 {
@@ -35,7 +35,7 @@ public class JWTToken
 
         JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
         JwtSecurityToken token = handler.CreateJwtSecurityToken(descriptor);
-        var result =  handler.WriteToken(token);
+        var result = handler.WriteToken(token);
         Console.WriteLine(result);
         return result;
     }

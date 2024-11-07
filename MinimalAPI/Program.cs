@@ -1,8 +1,7 @@
 using Mapster;
 using MinimalAPI;
-using Shared.Caching;
+using Service.Blog;
 using Shared.Models;
-using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +14,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 #region Redis
-
-builder.Services.AddSingleton<IConnectionMultiplexer>();
-builder.Services.AddSingleton<RedisService>();
+var redisConfiguration = builder.Configuration.GetSection("Redis")["URL"];
+//var redis = ConnectionMultiplexer.Connect(redisConfiguration);
+//builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
+//builder.Services.AddSingleton<RedisService>();
 builder.Services.InjectServices(configuration);
 #endregion
 
@@ -36,6 +36,14 @@ var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
+
+
+app.MapGet("/blogs", async (IBlogService blogService) =>
+{
+    var blogs = await blogService.GetListAsync();
+    return blogs;
+}).WithName("Get Blogs by PostgreSQL");
+
 
 app.MapGet("/weatherforecast", () =>
 {
@@ -120,7 +128,7 @@ public static class ConfigExtension
         var configuration = (IConfiguration)configurationBuilder;
         var stage = configuration.GetSection("Stage").Value;
 
-        string jsonPath = Path.Combine(currentRootPath, "..", "Config", $"custom-setting{stage}.json");
+        string jsonPath = Path.Combine(currentRootPath, "..", "Config", $"custom-setting-{stage}.json");
         configurationBuilder.AddJsonFile(jsonPath, optional: false, reloadOnChange: true);
         return configurationBuilder.Build();
     }

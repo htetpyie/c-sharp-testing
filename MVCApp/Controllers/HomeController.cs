@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCApp.Models;
-using Service.ClassService;
+using Service.Class;
 using Shared.Services;
 using System.Diagnostics;
 

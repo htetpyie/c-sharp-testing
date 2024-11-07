@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Sharp_Basic.Basics
+namespace Basic.Basics
 {
     public struct Time
     {
 
-        private int _hours, _minutes, _seconds; 
+        private int _hours, _minutes, _seconds;
         public Time(int hours, int minutes, int seconds)
         {
             _hours = hours;

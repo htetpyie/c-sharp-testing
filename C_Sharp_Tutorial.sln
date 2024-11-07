@@ -29,9 +29,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{2AAB593C-1042-49EC-8ABD-8BFEBF6C7EE5}"
 	ProjectSection(SolutionItems) = preProject
 		custom-setting-dev.json = custom-setting-dev.json
+		Config\custom-setting-dev.json = Config\custom-setting-dev.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{806445F3-2CD8-40A7-BE99-74535AD08801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +82,10 @@ Global
 		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5D22E20-DDEB-477D-AFA1-B5EDC3F2D9FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{806445F3-2CD8-40A7-BE99-74535AD08801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{806445F3-2CD8-40A7-BE99-74535AD08801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{806445F3-2CD8-40A7-BE99-74535AD08801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{806445F3-2CD8-40A7-BE99-74535AD08801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -49,20 +49,26 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
 
 #### MySQL
 ```
-dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.0
+dotnet add package Pomelo.EntityFrameworkCore.MySql
 ```
 
 #### SQL Server
 ```
-
-```
-#### [Lite Db](https://www.litedb.org/)
-```
-dotnet add package LiteDB
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 #### PostgreSQL
 
+```
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+
+Scaffold-DbContext "Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword" Npgsql.EntityFrameworkCore.PostgreSQL -o PostgreDbContextModels
+
+dotnet ef dbcontext scaffold "Host=localhost;Database=database;Username=username;Password=root" Npgsql.EntityFrameworkCore.PostgreSQL -o PostgreDbContextModels --context AppDbContext -f
+
+"ConnectionString": "Server=localhost;Database=elearning;User Id=ed;Password=YourPassword;"
+```
 ##### [Learn PostgreSql](https://neon.tech/postgresql/)
 ##### [Naming Convension](https://www.geeksforgeeks.org/postgresql-naming-conventions/)
 
@@ -70,15 +76,16 @@ dotnet add package LiteDB
 * Column Name -> snake_case with table name (product_id)
 * Index Name -> idx_snake_case (idx_product_name)
 
+
+#### [SQL Lite]
 ```
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
-
-Scaffold-DbContext "Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword" Npgsql.EntityFrameworkCore.PostgreSQL -o Models
-
-dotnet ef dbcontext scaffold "Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword" Npgsql.EntityFrameworkCore.PostgreSQL -o Models
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
+#### [Lite Db](https://www.litedb.org/)
+```
+dotnet add package LiteDB
+```
 
 ## [QR Coder](https://github.com/codebude/QRCoder/wiki/Advanced-usage---QR-Code-renderers#2-overview-of-the-different-renderers)
 ```

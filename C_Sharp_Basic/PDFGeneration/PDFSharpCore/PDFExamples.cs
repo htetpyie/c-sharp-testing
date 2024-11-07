@@ -11,9 +11,9 @@ using PdfSharpCore.Fonts;
 using PdfSharpCore.Pdf;
 using PdfSharpCore.Utils;
 using System.Diagnostics;
+using Basic.Helpers;
 
-
-namespace C_Sharp_Basic.PDFGeneration.PDFSharpCore
+namespace Basic.PDFGeneration.PDFSharpCore
 {
     public class PDFExamples
     {
@@ -41,6 +41,6 @@ namespace C_Sharp_Basic.PDFGeneration.PDFSharpCore
             Console.WriteLine($"Ellipsed time is {sw.ElapsedMilliseconds}");
             Console.Write("PDF is generated!");
         }
-        
+
     }
 }

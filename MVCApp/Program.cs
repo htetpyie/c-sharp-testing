@@ -1,6 +1,6 @@
 using Database.SQLDbContextModels;
 using Microsoft.EntityFrameworkCore;
-using Service.ClassService;
+using Service.Class;
 using Shared.Services;
 
 var builder = WebApplication.CreateBuilder(args);

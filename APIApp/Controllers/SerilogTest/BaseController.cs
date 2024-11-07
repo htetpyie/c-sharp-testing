@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace APIApp.Controllers
+namespace APIApp.Controllers.SerilogTest
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace APIApp.Controllers
 
         public BaseController()
         {
-            if(_logger is null)
+            if (_logger is null)
             {
                 var logger = new LoggerFactory().AddSerilog();
                 _logger = logger.CreateLogger("base");

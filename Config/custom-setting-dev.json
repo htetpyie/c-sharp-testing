@@ -5,7 +5,7 @@
         "PostgreConnection": "Host=localhost;Username=postgres;Password=root;Database=hppm"
     },
     "Redis": {
-        "URL": "localhost:6379",//127.0.0.1:6379
-        "CacheExpireTime": "10" //In Minutes
+        "URL": "127.0.0.1:6379",
+        "CacheExpireTime" :  "10" //In Minutes
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace AceAdminPortal.Database.AppDbContextModels;
+﻿namespace Database;
 
 public partial class Function
 {

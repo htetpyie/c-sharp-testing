@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using APIApp.Controllers.SerilogTest;
+using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 using System.Diagnostics;
 using System.Net.Http.Headers;
