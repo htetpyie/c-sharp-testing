@@ -62,6 +62,14 @@ dotnet add package LiteDB
 ```
 
 #### PostgreSQL
+
+##### [Learn PostgreSql](https://neon.tech/postgresql/)
+##### [Naming Convension](https://www.geeksforgeeks.org/postgresql-naming-conventions/)
+
+* Table Name -> plural nouns, snake_case (products)
+* Column Name -> snake_case with table name (product_id)
+* Index Name -> idx_snake_case (idx_product_name)
+
 ```
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
