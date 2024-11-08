@@ -1,6 +1,6 @@
 using Mapster;
 using MinimalAPI;
-using Service.Blog;
+using MinimalAPI.Endpoints;
 using Shared.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +12,7 @@ builder.Services.Configure<CustomSettingModel>(configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 #region Redis
 var redisConfiguration = builder.Configuration.GetSection("Redis")["URL"];
@@ -29,26 +30,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
 
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
-
-
-app.MapGet("/blogs", async (IBlogService blogService) =>
-{
-    var blogs = await blogService.GetListAsync();
-    return blogs;
-}).WithName("Get Blogs by PostgreSQL");
-
-
-app.MapPost("/blogs/save", async (IBlogService blogService) =>
-{
-    await blogService.SaveAsync();
-});
 
 app.MapGet("/weatherforecast", () =>
 {
@@ -75,6 +62,7 @@ app.MapGet("/persons", () =>
 }).WithName("Get Person")
   .WithOpenApi();
 
+app.MapEndpoints();
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
