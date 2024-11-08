@@ -5,7 +5,7 @@ namespace Database.PostgreDbContextModels;
 
 public partial class TblBlog
 {
-    public int BlogId { get; set; }
+    public long BlogId { get; set; }
 
     public string? BlogTitle { get; set; }
 

@@ -18,7 +18,7 @@ public class BlogService : IBlogService
         return list;
     }
 
-    public void SaveAsync()
+    public async Task SaveAsync()
     {
         var tblBlog = new TblBlog
         {
@@ -26,8 +26,8 @@ public class BlogService : IBlogService
             BlogAuthor = "Blog Author",
             BlogContent = "Blog Content"
         };
-        _postgreContext.TblBlogs.AddAsync(tblBlog);
-        _postgreContext.SaveChangesAsync();
+        await _postgreContext.TblBlogs.AddAsync(tblBlog);
+        await _postgreContext.SaveChangesAsync();
     }
 
 }

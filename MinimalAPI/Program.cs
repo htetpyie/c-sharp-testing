@@ -45,6 +45,11 @@ app.MapGet("/blogs", async (IBlogService blogService) =>
 }).WithName("Get Blogs by PostgreSQL");
 
 
+app.MapPost("/blogs/save", async (IBlogService blogService) =>
+{
+    await blogService.SaveAsync();
+});
+
 app.MapGet("/weatherforecast", () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>

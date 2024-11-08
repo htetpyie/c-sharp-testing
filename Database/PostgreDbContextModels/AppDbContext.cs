@@ -4,6 +4,10 @@ namespace Database.PostgreDbContextModels;
 
 public partial class AppDbContext : DbContext
 {
+    public AppDbContext()
+    {
+    }
+
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
@@ -21,9 +25,7 @@ public partial class AppDbContext : DbContext
 
             entity.ToTable("tbl_blog", "test");
 
-            entity.Property(e => e.BlogId)
-                .ValueGeneratedNever()
-                .HasColumnName("blog_id");
+            entity.Property(e => e.BlogId).HasColumnName("blog_id");
             entity.Property(e => e.BlogAuthor)
                 .HasMaxLength(100)
                 .HasColumnName("blog_author");

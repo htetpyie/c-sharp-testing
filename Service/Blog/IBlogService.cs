@@ -5,6 +5,6 @@ namespace Service.Blog
     public interface IBlogService
     {
         Task<List<TblBlog>> GetListAsync();
-        void SaveAsync();
+        Task SaveAsync();
     }
 }

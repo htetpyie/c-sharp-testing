@@ -15,7 +15,7 @@ public static class Startup
     public static void InjectServices(this IServiceCollection service, IConfiguration configuration)
     {
         #region Add Postgre SQL
-        var postgreConnection = configuration.GetSection("PostgreConnection").Value;
+        var postgreConnection = configuration.GetSection("DbConnections")["PostgreConnection"];
         service.AddDbContext<Database.PostgreDbContextModels.AppDbContext>(option =>
         {
             option.UseNpgsql(postgreConnection);
