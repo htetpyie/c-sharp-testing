@@ -1,7 +1,9 @@
 using Mapster;
 using MinimalAPI;
 using MinimalAPI.Endpoints;
+using Shared.Caching;
 using Shared.Models;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +18,9 @@ builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 #region Redis
 var redisConfiguration = builder.Configuration.GetSection("Redis")["URL"];
-//var redis = ConnectionMultiplexer.Connect(redisConfiguration);
-//builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
-//builder.Services.AddSingleton<RedisService>();
+var redis = ConnectionMultiplexer.Connect(redisConfiguration);
+builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
+builder.Services.AddSingleton<RedisService>();
 builder.Services.InjectServices(configuration);
 #endregion
 
