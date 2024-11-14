@@ -20,4 +20,8 @@
     <None Include="wwwroot\img\github-icon.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Stimulsoft.Reports.Web.NetCore" Version="2024.4.3" />
+  </ItemGroup>
+
 </Project>

@@ -7,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContext<SQLAppDbContext>(opt =>
-    opt.UseSqlServer(builder.Configuration.GetSection("DbConnections:SQLConnection").Value)
-    );
+	opt.UseSqlServer(builder.Configuration.GetSection("DbConnections:SQLConnection").Value)
+	);
 
 // Add services to the container.
 builder.Services.AddScoped<QRService>();
@@ -20,9 +20,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -33,7 +33,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+	name: "default",
+	pattern: "{controller=Report}/{action=Index}/{id?}");
 
 app.Run();
