@@ -30,6 +30,11 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=admin_portal_config;User
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=hppm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -f
 dotnet ef dbcontext scaffold "Server=localhost;Database=hpmm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -t function -f
+
+```
+##### Queries (rote to backupfile location)
+```
+sudo mysqldump -u username -p dbname.tablename > backupfile.sql
 ```
 
 #### SQL Server
