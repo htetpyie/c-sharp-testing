@@ -32,9 +32,10 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=hppm;User=root;Password=
 dotnet ef dbcontext scaffold "Server=localhost;Database=hpmm;User=root;Password=root;" Pomelo.EntityFrameworkCore.MySql -o AppDbContextModels --context AppDbContext -t function -f
 
 ```
-##### Queries (rote to backupfile location)
+##### Queries (rote to backup file location)
 ```
 sudo mysqldump -u username -p dbname.tablename > backupfile.sql
+mysql -u username -p < backupfile.sql
 ```
 
 #### SQL Server
@@ -110,6 +111,8 @@ dotnet add package Ulid
 ```
 dotnet add package StackExchange.Redis
 ```
+
+#### [Docker Containerization with .Net](https://learn.microsoft.com/en-us/dotnet/core/docker/build-container?tabs=windows)
 
 ## To Learn
 [.net 8 blazor](https://akifmt.github.io/dotnet/2024-07-28-blazor-radzen-.net8-authenticationauthorization-with-identity/)
