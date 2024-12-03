@@ -12,15 +12,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\img\github-icon.svg" />
+    <None Include="wwwroot\Reports\Blog.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="Stimulsoft.Reports.Web.NetCore" Version="2024.4.3" />
   </ItemGroup>
 
