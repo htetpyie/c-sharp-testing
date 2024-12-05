@@ -1,4 +1,5 @@
 using Database.SQLDbContextModels;
+using FastReport.Data;
 using Microsoft.EntityFrameworkCore;
 using Service.Class;
 using Shared.DbServices;
@@ -18,7 +19,12 @@ builder.Services.AddDbContext<SQLAppDbContext>(opt =>
 builder.Services.AddScoped<QRService>();
 builder.Services.AddScoped<ClassService>();
 builder.Services.AddScoped<JsonService>();
+builder.Services.AddScoped<DataSetService>();
 builder.Services.AddControllersWithViews();
+
+
+FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
+
 
 var app = builder.Build();
 
@@ -38,7 +44,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Report}/{action=Print}/{id?}");
+	pattern: "{controller=Report}/{action=FastReport}/{id?}");
+
 
 app.Run();
 

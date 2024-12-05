@@ -1,9 +1,13 @@
 ﻿using AspNetCore.Reporting;
+using FastReport.Export.Image;
+using FastReport.Web;
 using Microsoft.AspNetCore.Mvc;
 using Models.Blog;
 using Shared.DbServices;
+using Shared.Services;
 using Stimulsoft.Report;
 using Stimulsoft.Report.Mvc;
+using System.Data;
 
 namespace MVCApp.Controllers
 {
@@ -12,11 +16,13 @@ namespace MVCApp.Controllers
 
 		private readonly IWebHostEnvironment _webHostEnvironment;
 		private readonly JsonService _jsonService;
+		private readonly DataSetService _dataSetService;
 
-		public ReportController(IWebHostEnvironment webHostEnvironment, JsonService jsonService)
+		public ReportController(IWebHostEnvironment webHostEnvironment, JsonService jsonService, DataSetService dataSetService)
 		{
 			_webHostEnvironment = webHostEnvironment;
 			_jsonService = jsonService;
+			_dataSetService = dataSetService;
 		}
 
 		public IActionResult Index()
@@ -74,6 +80,43 @@ namespace MVCApp.Controllers
 				throw;
 			}
 		}
+		#endregion
+
+		#region Fast Report
+		public IActionResult FastReport(int? reportIndex = 0)
+		{
+			var report = new FastReport.Report();
+			report.Load(Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx"));
+
+			report.Prepare();
+
+			string outfolder = "Desktop";
+			if (!Directory.Exists(outfolder)) Directory.CreateDirectory(outfolder);
+			report.SavePrepared(Path.Combine(outfolder, "Prepared Report.fpx"));
+
+			// export to image
+			ImageExport image = new ImageExport();
+			image.ImageFormat = ImageExportFormat.Jpeg;
+			report.Export(image, Path.Combine(outfolder, "report.jpg"));
+
+			report.Dispose();
+
+			return View();
+		}
+
+		public IActionResult Generate()
+		{
+			WebReport webReport = new WebReport();
+			webReport.Report.Load($"{Directory.GetCurrentDirectory()}/Reports/report.frx");
+
+			// Load data into the report
+			DataSet dataSet = new DataSet();
+			dataSet.ReadXml($"{Directory.GetCurrentDirectory()}/Data/data.xml");
+			webReport.Report.RegisterData(dataSet, "Data");
+
+			return View(webReport);
+		}
+
 		#endregion
 	}
 }
