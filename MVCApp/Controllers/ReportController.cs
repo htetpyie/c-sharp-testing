@@ -46,7 +46,7 @@ namespace MVCApp.Controllers
 		}
 
 		#region RDLC
-		public IActionResult Print()
+		public IActionResult RDLC()
 		{
 			try
 			{
@@ -54,7 +54,7 @@ namespace MVCApp.Controllers
 				int extnesion = 1;
 
 				var jsonFilePath = "E:\\HPPM\\Projects\\c-sharp-testing\\Shared\\Jsons\\blog_data.json";
-				var reportPath = $"{this._webHostEnvironment.WebRootPath}\\Reports\\Blog.rdlc";
+				var reportPath = $"{_webHostEnvironment.WebRootPath}\\Reports\\Blog.rdlc";
 
 				var parameters = new Dictionary<string, string>();
 
@@ -64,14 +64,13 @@ namespace MVCApp.Controllers
 
 				parameters.Add("title", blog.Title);
 				parameters.Add("author", blog.Author);
-				LocalReport localReport = new LocalReport(reportPath);
+				var localReport = new LocalReport(reportPath);
 
-				var result = localReport.Execute(RenderType.Pdf, extnesion, parameters, mimtype);
+				var result = localReport.Execute(RenderType.Pdf, extnesion, parameters);
 				return File(result.MainStream, "application/pdf");
 			}
 			catch (Exception ex)
 			{
-
 				throw;
 			}
 		}
