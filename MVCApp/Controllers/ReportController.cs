@@ -1,5 +1,4 @@
 ﻿using AspNetCore.Reporting;
-using FastReport.Export.Image;
 using FastReport.Web;
 using Microsoft.AspNetCore.Mvc;
 using Models.Blog;
@@ -85,23 +84,28 @@ namespace MVCApp.Controllers
 		#region Fast Report
 		public IActionResult FastReport(int? reportIndex = 0)
 		{
+			var reportPath = Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx");
 			var report = new FastReport.Report();
 			report.Load(Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx"));
 
 			report.Prepare();
 
-			string outfolder = "Desktop";
-			if (!Directory.Exists(outfolder)) Directory.CreateDirectory(outfolder);
-			report.SavePrepared(Path.Combine(outfolder, "Prepared Report.fpx"));
+			var webReport = new WebReport();
 
-			// export to image
-			ImageExport image = new ImageExport();
-			image.ImageFormat = ImageExportFormat.Jpeg;
-			report.Export(image, Path.Combine(outfolder, "report.jpg"));
+			webReport.Report.Load(reportPath);
+
+			//string outfolder = "Desktop";
+			//if (!Directory.Exists(outfolder)) Directory.CreateDirectory(outfolder);
+			//report.SavePrepared(Path.Combine(outfolder, "Prepared Report.fpx"));
+
+			//// export to image
+			//ImageExport image = new ImageExport();
+			//image.ImageFormat = ImageExportFormat.Jpeg;
+			//report.Export(image, Path.Combine(outfolder, "report.jpg"));
 
 			report.Dispose();
 
-			return View();
+			return View(webReport);
 		}
 
 		public IActionResult Generate()

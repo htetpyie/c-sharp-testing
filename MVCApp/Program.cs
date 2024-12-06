@@ -21,6 +21,7 @@ builder.Services.AddScoped<ClassService>();
 builder.Services.AddScoped<JsonService>();
 builder.Services.AddScoped<DataSetService>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddFastReport();
 
 
 FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
@@ -45,7 +46,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Report}/{action=FastReport}/{id?}");
-
+app.UseFastReport();
 
 app.Run();
 

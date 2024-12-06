@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report ScriptLanguage="CSharp" ReportInfo.Created="12/05/2024 16:22:40" ReportInfo.Modified="12/05/2024 16:42:34" ReportInfo.CreatorVersion="2025.1.0.0">
   <Dictionary>
-    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM7gJFg/iaLrqMhRfGy5lGh+fttelMOwJBbd/dUI5p0Sav8iVb6zFYNpt6PNdzo5djwDtddxKpnXqxg6IM1Q5+GBALB9RCJeRzXF9n1IrulZY57TZVrIa3O3X+5u/9PCL824jTLG75BFprITpN0c94+q2NZawuzxPGuAPSlA2Z4KqS/ODqMyq7qnRmYrFjOS22uuurhNckVb+z8eAxAbvEQ==">
+    <MsSqlDataConnection Name="Connection" ConnectionString="Server=DESKTOP-M79QK2C;Database=FastReportDb;Trusted_Connection = True;">
       <TableDataSource Name="Employee" DataType="System.Int32" Enabled="true" TableName="Employee">
         <Column Name="Id" DataType="System.Int32"/>
         <Column Name="EmployeeName" DataType="System.String"/>

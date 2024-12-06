@@ -116,3 +116,8 @@ dotnet add package StackExchange.Redis
 
 ## To Learn
 [.net 8 blazor](https://akifmt.github.io/dotnet/2024-07-28-blazor-radzen-.net8-authenticationauthorization-with-identity/)
+
+
+### Reporting
+#### Fast Report
+[FastReport.Web](https://github.com/FastReports/FastReport.Documentation/blob/master/WebReport.md)
