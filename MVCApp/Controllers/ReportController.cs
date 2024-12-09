@@ -1,4 +1,5 @@
 ﻿using AspNetCore.Reporting;
+using FastReport.Export.PdfSimple;
 using FastReport.Web;
 using Microsoft.AspNetCore.Mvc;
 using Models.Blog;
@@ -84,16 +85,10 @@ namespace MVCApp.Controllers
 		#region Fast Report
 		public IActionResult FastReport(int? reportIndex = 0)
 		{
-			var reportPath = Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx");
-			var report = new FastReport.Report();
-			report.Load(Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx"));
-
-			report.Prepare();
-
-			var webReport = new WebReport();
-
-			webReport.Report.Load(reportPath);
-
+			//var reportPath = Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx");
+			//var report = new FastReport.Report();
+			//report.Load(reportPath);
+			//report.Prepare();
 			//string outfolder = "Desktop";
 			//if (!Directory.Exists(outfolder)) Directory.CreateDirectory(outfolder);
 			//report.SavePrepared(Path.Combine(outfolder, "Prepared Report.fpx"));
@@ -102,9 +97,9 @@ namespace MVCApp.Controllers
 			//ImageExport image = new ImageExport();
 			//image.ImageFormat = ImageExportFormat.Jpeg;
 			//report.Export(image, Path.Combine(outfolder, "report.jpg"));
+			//report.Dispose();
 
-			report.Dispose();
-
+			var webReport = GetFastReport();
 			return View(webReport);
 		}
 
@@ -121,6 +116,28 @@ namespace MVCApp.Controllers
 			return View(webReport);
 		}
 
+		public IActionResult Pdf()
+		{
+			var webReport = GetFastReport();
+			webReport.Report.Prepare();
+
+			using (MemoryStream ms = new MemoryStream())
+			{
+				PDFSimpleExport pdfExport = new PDFSimpleExport();
+				pdfExport.Export(webReport.Report, ms);
+				ms.Flush();
+				return File(ms.ToArray(), "application/pdf", Path.GetFileNameWithoutExtension("Master-Detail") + ".pdf");
+			}
+		}
+
+
+		private WebReport GetFastReport()
+		{
+			var reportPath = Path.Combine(Environment.CurrentDirectory, "Reports", "EmployeeList.frx");
+			var webReport = new WebReport();
+			webReport.Report.Load(reportPath);
+			return webReport;
+		}
 		#endregion
 	}
 }

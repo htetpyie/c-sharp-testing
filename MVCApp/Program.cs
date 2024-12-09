@@ -8,6 +8,8 @@ using Shared.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
+
 var configuration = builder.Configuration.AddStageConfig(builder.Environment.ContentRootPath);
 builder.Services.Configure<CustomSettingModel>(configuration);
 
@@ -24,7 +26,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddFastReport();
 
 
-FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
 
 
 var app = builder.Build();
