@@ -121,3 +121,32 @@ dotnet add package StackExchange.Redis
 ### Reporting
 #### Fast Report
 [FastReport.Web](https://github.com/FastReports/FastReport.Documentation/blob/master/WebReport.md)
+
+### [Microsoft Identity](https://medium.com/@mohamed.ebrahim.mohsen/net8-identity-register-login-email-confirmation-and-two-factor-authentication-2fa-c8acfbc3e14c) 
+```
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+```
+
+```
+builder.Services.AddAuthentication()
+                .AddBearerToken(IdentityConstants.BearerScheme);
+
+builder.Services.AddAuthorizationBuilder();
+```
+
+```
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlite("DataSource=app.db");
+});
+
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddApiEndpoints();
+
+app.MapIdentityApi<IdentityUser>();
+```

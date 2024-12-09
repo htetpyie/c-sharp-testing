@@ -1,9 +1,12 @@
 using APIApp.Controllers.FilterTesting.ActionFilter;
+using APIApp.DbContext;
 using APIApp.GraphQl;
 using APIApp.LiteDb;
 using APIApp.Middleware;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using StackExchange.Redis;
 using System.Threading.RateLimiting;
@@ -11,6 +14,7 @@ using System.Threading.RateLimiting;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 
 #region Rate Limitting
 https://learn.microsoft.com/en-us/aspnet/core/performance/rate-limit?view=aspnetcore-8.0https://learn.microsoft.com/en-us/aspnet/core/performance/rate-limit?view=aspnetcore-8.0
@@ -69,6 +73,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<LiteDbService>();
 
+#region Authentication & Authorization using Identity
+builder.Services.AddAuthentication()
+				.AddBearerToken(IdentityConstants.BearerScheme);
+
+builder.Services.AddAuthorizationBuilder();
+
+builder.Services.AddDbContext<AppDbContext>(opt =>
+{
+	opt.UseSqlite("Datasource=api_app.db");
+});
+
+builder.Services
+	.AddIdentityCore<IdentityUser>()
+	.AddEntityFrameworkStores<AppDbContext>()
+	.AddApiEndpoints();
+#endregion
+
 #region Graphql
 builder.Services
     .AddRouting()
@@ -100,12 +121,13 @@ apiVersioningBuilder.AddApiExplorer(
 #endregion
 
 #region Redis
-builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost"));
+//builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost"));
 builder.Services.AddHttpClient();
 #endregion
 
 var app = builder.Build();
 
+app.MapIdentityApi<IdentityUser>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

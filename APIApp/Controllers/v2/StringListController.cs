@@ -9,9 +9,9 @@ namespace APIApp.Controllers.v2;
 [ApiVersion("2.0")]
 public class StringListController : ControllerBase
 {
-    [HttpGet()]
-    public IEnumerable<string> GetString()
-    {
-        return Data.Summaries.Where(x => x.StartsWith("C"));
-    }
+	[HttpGet()]
+	public IEnumerable<string> GetString()
+	{
+		return Data.Summaries.Where(x => x.StartsWith("C"));
+	}
 }
