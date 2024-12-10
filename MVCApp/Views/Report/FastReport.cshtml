@@ -1,6 +1,9 @@
 ﻿@model FastReport.Web.WebReport
-
 <div>
     <a asp-action="Pdf" class="btn btn-success">PDF</a>
-    @await Model.Render()
+    <div class="m-auto" id="fast-report" data-controller="Report">@await Model.Render()</div>
 </div>
+
+@section Scripts {
+    <script src="~/js/fastreport.js"></script>
+}

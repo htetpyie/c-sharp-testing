@@ -1,0 +1,16 @@
+.fr-toolbar {
+    background-color: #333; /* Change toolbar background */
+    color: white; /* Change text color */
+}
+
+.fr-toolbar-button-custom {
+    background-color: #007bff; /* Custom button background */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+    .fr-toolbar-button-custom:hover {
+        background-color: #0056b3;
+    }
