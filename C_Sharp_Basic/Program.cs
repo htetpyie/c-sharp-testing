@@ -8,10 +8,14 @@
 
 //JWTToken.Run();
 
+using Basic.DbBackup;
+
 var ulId = Ulid.NewUlid();
 var ulId2 = Ulid.NewUlid();
 
 Console.WriteLine(ulId);
 Console.WriteLine(ulId2);
+
+MySqlBackup.PerformBackup();
 
 Console.ReadLine();
