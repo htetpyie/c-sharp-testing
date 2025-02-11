@@ -46,6 +46,10 @@ namespace Basic.DbBackup
 
 			string dumpCommand = $"mysqldump -u {user} -p{password} {database}";
 
+
+			// Include --routines to back up stored procedures and functions
+			//string dumpCommand = $"mysqldump -u {user} -p{password} --routines --databases {database}";
+
 			var process = new Process
 			{
 				StartInfo = new ProcessStartInfo
