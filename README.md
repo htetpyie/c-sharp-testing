@@ -150,3 +150,8 @@ builder.Services.AddIdentityCore<IdentityUser>()
 
 app.MapIdentityApi<IdentityUser>();
 ```
+
+## MS Identity
+* Create project with Individual Accounts or add later
+* Add Sample pages from Add New Item -> Scaffolded Item -> Identity
+* Add Migration and Update Database

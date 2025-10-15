@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowForm.Report", "WindowForm.Report\WindowForm.Report.csproj", "{8567F81B-F17A-4FA6-88FF-B39255D98568}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSIdentity", "MSIdentity\MSIdentity.csproj", "{AC29E159-F740-4C0C-84BD-DCCF8DE63727}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{8567F81B-F17A-4FA6-88FF-B39255D98568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8567F81B-F17A-4FA6-88FF-B39255D98568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8567F81B-F17A-4FA6-88FF-B39255D98568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC29E159-F740-4C0C-84BD-DCCF8DE63727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC29E159-F740-4C0C-84BD-DCCF8DE63727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC29E159-F740-4C0C-84BD-DCCF8DE63727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC29E159-F740-4C0C-84BD-DCCF8DE63727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
